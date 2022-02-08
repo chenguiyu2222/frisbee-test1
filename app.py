@@ -15,7 +15,7 @@ print(df.columns)
 fig = px.scatter_mapbox(df, text = 'text',lat="lat84", lon="lon84",  size_max=30, zoom=3,height=900)
 fig.update_layout(mapbox_style="dark", mapbox_accesstoken=token)
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 server = app.server
 app.layout = html.Div(
     dbc.Container(
@@ -26,4 +26,5 @@ app.layout = html.Div(
     )
 )
 
-app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
